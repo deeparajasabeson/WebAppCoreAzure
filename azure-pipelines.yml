@@ -21,7 +21,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-steps:
 - task: UseDotNet@2
   inputs:
     version: '3.0.x'
@@ -144,7 +143,7 @@ steps:
     zipAfterPublish: True
 
 
-    
+
 
 
 
