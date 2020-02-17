@@ -75,6 +75,6 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '<Azure service connection>'
-    appName: '<Name of web app>'
+    azureSubscription: 'WebAppCoreAzure'
+    appName: 'WebAppCoreAzure'
     package: $(System.ArtifactsDirectory)/**/*.zip
