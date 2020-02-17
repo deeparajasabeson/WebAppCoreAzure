@@ -30,7 +30,6 @@ steps:
     version: '2.2.x'
     packageType: runtime
 
-steps:
 - task: UseDotNet@2
   displayName: 'Install .NET Core SDK'
   inputs:
@@ -38,7 +37,6 @@ steps:
     performMultiLevelLookup: true
 
 # do this before your build tasks
-steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: restore
@@ -48,7 +46,6 @@ steps:
     externalFeedCredentials: <Name of the NuGet service connection>
 # ...
 
-steps:
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -56,7 +53,6 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release' # Update this to match your need
 
-steps:
 # ...
 # do this after other tasks such as building
 - task: DotNetCoreCLI@2
@@ -65,7 +61,6 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-steps:
 # ...
 # do this after your tests have run
 - script: dotnet test <test-project> --logger trx
@@ -75,7 +70,6 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
 
-steps:
 # ...
 # do this after other tasks such as building
 - task: DotNetCoreCLI@2
@@ -84,7 +78,6 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-steps:
 # ...
 # do this after your tests have run
 - script: dotnet test <test-project> --logger trx --collect "Code coverage"
@@ -116,8 +109,6 @@ steps:
     codeCoverageTool: Cobertura
     summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml
 
-steps:
-
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
@@ -131,7 +122,6 @@ steps:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
 
-steps:
 # ...
 # do this after you've built your app, near the end of your pipeline in most cases
 # for example, you do this before you deploy to an Azure web app on Windows
@@ -141,13 +131,6 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
-
-
-
-
-
-
-
 
 - task: VSBuild@1
   inputs:
