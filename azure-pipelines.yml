@@ -28,8 +28,6 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release' # Update this to match your need
 
-
-
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
