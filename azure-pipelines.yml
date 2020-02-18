@@ -61,7 +61,7 @@ steps:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'WebAppCoreAzure'
 
-- task: AzureRmWebAppDeployment@4
+- task: AzureRmWebAppDeployment@3
   inputs:
     azureSubscription: 'Azure subscription 1'
     WebAppName: 'WebAppCoreAzure'
