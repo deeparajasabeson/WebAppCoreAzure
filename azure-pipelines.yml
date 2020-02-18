@@ -71,8 +71,8 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'WebAppCoreAzure'
-    appName: 'WebAppCoreAzure'
-    package: $(System.ArtifactsDirectory)/**/*.zip
+#- task: AzureWebApp@1
+#  inputs:
+#    azureSubscription: 'WebAppCoreAzure'
+#    appName: 'WebAppCoreAzure'
+#    package: $(System.ArtifactsDirectory)/**/*.zip
