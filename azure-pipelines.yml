@@ -63,7 +63,10 @@ steps:
 
 - task: AzureRmWebAppDeployment@4
   inputs:
-    VirtualApplication: 'WebAppCoreAzure'
+    azureSubscription: 'Azure subscription 1'
+    WebAppName: 'WebAppCoreAzure'
+#    VirtualApplication: 'WebAppCoreAzure'
+
 # ...
 # do this after you've built your app, near the end of your pipeline in most cases
 # for example, you do this before you deploy to an Azure web app on Windows
@@ -74,8 +77,8 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-#- task: AzureWebApp@1
-#  inputs:
-#    azureSubscription: 'WebAppCoreAzure'
-#    appName: 'WebAppCoreAzure'
-#    package: $(System.ArtifactsDirectory)/**/*.zip
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1'
+    appName: 'WebAppCoreAzure'
+    package: $(System.ArtifactsDirectory)/**/*.zip
